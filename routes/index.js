@@ -4,6 +4,7 @@ const router = express.Router();
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
+
 router.use('/api', createProxyMiddleware({
     //where our server is running
     //roku server
@@ -14,20 +15,13 @@ router.use('/api', createProxyMiddleware({
     changeOrigin: true
 }))
 
+
+
 // this file is for handling
 // UI requests
-router.get('/', (req, res) => {
-    // res.send('hit the main route');
-    res.render('index', { message: 'hello from handlebars!' })
-})
-router.get('/portfolio', (req, res) => {
-    // res.send('hit the main route');
-    res.render('artwork', { anothermessage: 'You are on portfolio page' })
-})
 
-// other routes you might use
-router.use((req, res) => {
-    res.status(404);
-    res.render('error', { layout: "errorLayout.hbs", errormessage: `you've lost your way! " ${req.url}" does not exist` });
-})
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "index.html"));
+// });
+
 module.exports = router;

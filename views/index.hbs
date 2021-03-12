@@ -1,0 +1,6 @@
+<section class="home-hero">
+    {{!-- render dynamic data here --}}
+    {{!-- the same as php echo --}}
+    <h1> {{ message }} </h1>
+    <moviethumb v-for="item in allMovies" :movie="item" :key="item.movies_id"></moviethumb>
+</section>

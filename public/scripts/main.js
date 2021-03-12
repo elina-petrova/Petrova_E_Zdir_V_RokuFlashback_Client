@@ -2,6 +2,7 @@ import HomePage from "./components/TheHomePageComponent.js";
 import LoginPage from "./components/TheLoginComponent.js";
 import Protected from "./components/TheProtectedComponent.js";
 import TheMovieThumb from './components/TheMovieThumbnailComponent.js';
+import SingleMovie from './components/TheSingleMovieComponent.js';
 
 (() => {
     console.log('fired!');
@@ -10,6 +11,7 @@ import TheMovieThumb from './components/TheMovieThumbnailComponent.js';
         routes: [
             { path: "/", component: HomePage },
             { path: "/login", component: LoginPage },
+            { path: "/singlemovie", name: "singlemovie", component: SingleMovie },
 
             //show only if logged in / authenticated
             {
@@ -34,7 +36,7 @@ import TheMovieThumb from './components/TheMovieThumbnailComponent.js';
             message: 'Hello!',
             authenticated: false,
             user: "Elina",
-            allMovies: []
+            allMovies: [],
         },
         created: function () {
             if (window.localStorage.getItem("creds")) {
@@ -46,7 +48,6 @@ import TheMovieThumb from './components/TheMovieThumbnailComponent.js';
                 .then(res => res.json())
                 .then(data => {
                     console.table(data);
-
                     this.allMovies = data;
                 })
                 .catch(err => console.error(err))

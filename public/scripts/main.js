@@ -10,29 +10,22 @@ import SingleMovie from './components/TheSingleMovieComponent.js';
     const router = new VueRouter({
         // mode: "history",
         routes: [
-            { path: "/", component: HomePage },
-            { path: "/login", component: LoginPage },
+            { path: "/", redirect: { name: "home" } },
+            { path: "/login", name: "login", component: LoginPage },
+            { path: "/protected", component: Protected },
             { path: "/movie/:id", name: "singlemovie", component: SingleMovie, props: true },
 
-            //show only if logged in / authenticated
             {
-                path: "/admin",
-                component: Protected,
-
-                beforeEnter: (to, from, next) => {
-                    // if you are NOT authenticated, then og to the login page
-                    if (!vm.authenticated) {
-                        next("/login");
-                    } else {
-                        // you are logegd in, you can go to the protected section
-                        next();
-                    }
-                }
+                path: "/homepage",
+                component: HomePage,
+                name: "home"
             }
         ]
     })
 
+
     const vm = new Vue({
+        router,
         data: {
             message: 'Hello!',
             authenticated: false,
@@ -41,19 +34,29 @@ import SingleMovie from './components/TheSingleMovieComponent.js';
         },
         created: function () {
             if (window.localStorage.getItem("creds")) {
+                console.log('logged in');
                 this.authenticated = true;
                 this.user = JSON.parse(window.localStorage.getItem("creds")).name;
+            } else {
+                this.$router.push({ name: "login" });
             }
-
-
-
         },
         methods: {
 
         },
         components: {
             moviethumb: TheMovieThumb
-        },
-        router,
+        }
     }).$mount("#app");
+
+    router.beforeResolve((to, from, next) => {
+        if (!vm.authenticated) {
+            console.log("go login!");
+            next("login");
+        } else {
+            console.log("its okay he is logged in");
+            next();
+        }
+    })
+
 })();

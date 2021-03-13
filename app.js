@@ -10,6 +10,9 @@ app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "landing.html"));
+});
+app.get("/homepage", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 

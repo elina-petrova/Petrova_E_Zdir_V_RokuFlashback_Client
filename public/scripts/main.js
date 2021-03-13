@@ -12,7 +12,7 @@ import SingleMovie from './components/TheSingleMovieComponent.js';
         routes: [
             { path: "/", component: HomePage },
             { path: "/login", component: LoginPage },
-            { path: "/movie/:id", name: "singlemovie", component: SingleMovie, props: true, meta: { movies_title: 'Store' } },
+            { path: "/movie/:id", name: "singlemovie", component: SingleMovie, props: true },
 
             //show only if logged in / authenticated
             {

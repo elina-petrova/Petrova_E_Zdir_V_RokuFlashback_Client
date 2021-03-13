@@ -8,10 +8,11 @@ import SingleMovie from './components/TheSingleMovieComponent.js';
     console.log('fired!');
 
     const router = new VueRouter({
+        // mode: "history",
         routes: [
             { path: "/", component: HomePage },
             { path: "/login", component: LoginPage },
-            { path: "/singlemovie", name: "singlemovie", component: SingleMovie },
+            { path: "/movie/:id", name: "singlemovie", component: SingleMovie, props: true, meta: { movies_title: 'Store' } },
 
             //show only if logged in / authenticated
             {
@@ -35,8 +36,8 @@ import SingleMovie from './components/TheSingleMovieComponent.js';
         data: {
             message: 'Hello!',
             authenticated: false,
-            user: "Elina",
             allMovies: [],
+            currentMovie: ''
         },
         created: function () {
             if (window.localStorage.getItem("creds")) {
@@ -44,13 +45,7 @@ import SingleMovie from './components/TheSingleMovieComponent.js';
                 this.user = JSON.parse(window.localStorage.getItem("creds")).name;
             }
 
-            fetch('/api/movies')
-                .then(res => res.json())
-                .then(data => {
-                    console.table(data);
-                    this.allMovies = data;
-                })
-                .catch(err => console.error(err))
+
 
         },
         methods: {

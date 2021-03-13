@@ -1,27 +1,25 @@
 export default {
     name: "TheSingleMovie",
+    props: ["id"],
     template: `
     <div>
-        <h1> {{ currentMovieTitle }} </h1>
+        <h1> {{ theMovie.movies_title }} </h1>
+        <img :src='"images/" + theMovie.movies_cover' alt="movie poster">
     </div>
     `,
     data() {
         return {
-            currentMovie: [],
-            currentMovieTitle: '',
+            theMovie: {},
         }
     },
     created: function () {
-        fetch(`/api/movies/${this.$route.params.movieID}`)
+        console.log('get movie');
+        fetch(`/api/movies/${this.id}`)
             .then(res => res.json())
             .then(data => {
-                console.table(data);
-                this.currentMovie = data;
-                this.currentMovieTitle = Object.values(this.currentMovie[0])[2];
+                this.theMovie = data[0];
             })
             .catch(err => console.error(err))
-
-
-    }
+    },
 
 }

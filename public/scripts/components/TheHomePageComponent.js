@@ -19,8 +19,6 @@ export default {
         fetch('/api/movies')
             .then(res => res.json())
             .then(data => {
-                console.table(data);
-
                 this.allMovies = data;
             })
             .catch(err => console.error(err))

@@ -4,14 +4,7 @@ const router = express.Router();
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-// whenever we get a request to api
-// this router will catch the request
-// and send it to our server
-// and server will return it and
-// give us a data
 
-// making our server responsible
-// for all data mining/requestss
 router.use('/api', createProxyMiddleware({
     //where our server is running
     //roku server
@@ -22,10 +15,13 @@ router.use('/api', createProxyMiddleware({
     changeOrigin: true
 }))
 
+
+
 // this file is for handling
 // UI requests
-router.get('/', (req, res) => {
-    res.send('hit the main route');
-})
+
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "index.html"));
+// });
 
 module.exports = router;

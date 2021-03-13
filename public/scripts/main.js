@@ -3,6 +3,8 @@ import LoginPage from "./components/TheLoginComponent.js";
 import Protected from "./components/TheProtectedComponent.js";
 import TheMovieThumb from './components/TheMovieThumbnailComponent.js';
 import SingleMovie from './components/TheSingleMovieComponent.js';
+import SingleTv from './components/TheSingleTvComponent.js';
+import SingleMusic from './components/TheSingleMusicComponent.js';
 
 (() => {
     console.log('fired!');
@@ -14,6 +16,8 @@ import SingleMovie from './components/TheSingleMovieComponent.js';
             { path: "/login", name: "login", component: LoginPage },
             { path: "/protected", component: Protected },
             { path: "/movie/:id", name: "singlemovie", component: SingleMovie, props: true },
+            { path: "/tv/:id", name: "singletv", component: SingleTv, props: true },
+            { path: "/music/:id", name: "singlemusic", component: SingleMusic, props: true },
 
             {
                 path: "/homepage",

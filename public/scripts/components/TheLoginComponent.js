@@ -25,10 +25,8 @@ export default {
     methods: {
         storeCreds() {
             window.localStorage.setItem("creds", JSON.stringify({ name: this.username, pword: this.password }));
-            window.localStorage.setItem("progress", JSON.stringify({
-                tutname: "Using React",
-                videosession: 1
-            }));
+            this.$parent.authenticated = true;
+            this.$router.push({ name: "home" });
         }
     }
 }

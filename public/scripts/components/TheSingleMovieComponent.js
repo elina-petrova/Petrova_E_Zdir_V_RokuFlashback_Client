@@ -15,7 +15,7 @@ export default {
         <p> Country:  {{ theMovie.country_name }} </p>
         <p> Description: {{ theMovie.movies_storyline }} </p>
 
-
+        <video :src='"trailers/" + theMovie.movies_trailer' controls alt="trailer"></video>
     </div>
     `,
     data() {

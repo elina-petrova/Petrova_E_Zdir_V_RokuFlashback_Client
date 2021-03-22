@@ -6,7 +6,6 @@ export default {
         <h1> {{ theMovie.movies_title }} </h1>
         <img :src='"images/" + theMovie.movies_cover' alt="movie poster">
 
-
         <p> Year: {{ theMovie.movies_year }} </p>
         <p> Runtime: {{ theMovie.movies_runtime}} </p>
         <p> Genre: {{ theMovie.genre_name }} </p>

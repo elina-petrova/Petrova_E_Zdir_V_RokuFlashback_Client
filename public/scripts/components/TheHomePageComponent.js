@@ -8,9 +8,29 @@ export default {
     template: `
     <div>
     <h1>This is the home page component</h1>
+
+                <h2>This content could be your nav</h2>
+            <ul class="filterNav">
+                <li>
+                    <a @click.prevent="filterMovies('Action')" href="">Action</a>
+                </li>
+                <li>
+                    <a @click.prevent="filterMovies('Comedy')" href="">Comedy</a>
+                </li>
+                <li>
+                    <a @click.prevent="filterMovies('Family')" href="">Family</a>
+                </li>
+                <li>
+                    <a @click.prevent="filterMovies('Drama')" href="">Drama</a>
+                </li>
+                <li>
+                    <a @click.prevent="filterMovies('all')" href="">All</a>
+                </li>
+            </ul>
+
     <h2>Movies</h2>
     <div>
-    <moviethumb v-for="item in allMovies" :movie="item" :key="item.movies_id"></moviethumb>
+    <moviethumb v-for="item in filteredMovies" :movie="item" :key="item.movies_id"></moviethumb>
     </div>
 
     <h2>TV shows </h2>
@@ -27,8 +47,11 @@ export default {
     data() {
         return {
             allMovies: [],
+            filteredMovies: [],
             allTvs: [],
-            allMusic: []
+            filteredTvs: [],
+            allMusic: [],
+            filteredTvs: []
         }
     },
     created: function () {
@@ -36,7 +59,7 @@ export default {
         fetch('/api/movies')
             .then(res => res.json())
             .then(data => {
-                this.allMovies = data;
+                this.allMovies = this.filteredMovies = data;
             })
             .catch(err => console.error(err))
 
@@ -54,7 +77,15 @@ export default {
             })
             .catch(err => console.error(err))
     },
-
+    methods: {
+        filterMovies(genre) {
+            if (genre === 'all') {
+                this.filteredMovies = this.allMovies;
+                return;
+            }
+            this.filteredMovies = this.allMovies.filter(movie => movie.genre_name.includes(genre));
+        }
+    },
 
     components: {
         moviethumb: TheMovieThumb,

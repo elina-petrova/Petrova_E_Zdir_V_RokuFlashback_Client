@@ -17,7 +17,8 @@ export default {
     methods: {
         goToSingleMoviePage: function () {
             console.log(this.thismovie.movies_id);
-            this.$router.push({ name: "singlemovie", params: { id: this.movie.movies_id } });
+            var routeData = this.$router.resolve({ name: "singlemovie", params: { id: this.movie.movies_id } });
+            window.open(routeData.href, '_blank');
         }
     }
 }

@@ -5,6 +5,7 @@ import TheMovieThumb from './components/TheMovieThumbnailComponent.js';
 import SingleMovie from './components/TheSingleMovieComponent.js';
 import SingleTv from './components/TheSingleTvComponent.js';
 import SingleMusic from './components/TheSingleMusicComponent.js';
+import theMoviesHomepage from "./components/theMoviesHomepage.js";
 
 (() => {
     console.log('fired!');
@@ -18,6 +19,7 @@ import SingleMusic from './components/TheSingleMusicComponent.js';
             { path: "/movie/:id", name: "singlemovie", component: SingleMovie, props: true },
             { path: "/tv/:id", name: "singletv", component: SingleTv, props: true },
             { path: "/music/:id", name: "singlemusic", component: SingleMusic, props: true },
+            { path: "/movies", name: "movieshomepage", component: theMoviesHomepage, props: true },
 
             {
                 path: "/homepage",

@@ -24,7 +24,8 @@ import theMoviesHomepage from "./components/theMoviesHomepage.js";
             {
                 path: "/homepage",
                 component: HomePage,
-                name: "home"
+                name: "home",
+                props: true
             }
         ]
     })

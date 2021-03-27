@@ -3,7 +3,9 @@ export default {
     props: ["music"],
     template: `
     <div class="music-thumb">
+        <div class="img-wrap">
         <img :src='"images/" + music.music_cover' alt="music thumb" @click="goToSingleMusicPage">
+</div>
     </div>
     `,
     data() {
@@ -15,8 +17,9 @@ export default {
     },
     methods: {
         goToSingleMusicPage: function () {
-            // console.log(this.thismovie.movies_id);
-            this.$router.push({ name: "singlemusic", params: { id: this.music.music_id } });
+            var routeData = this.$router.resolve({ name: "singlemusic", params: { id: this.music.music_id } });
+            window.open(routeData.href, '_blank');
+
         }
     }
 }

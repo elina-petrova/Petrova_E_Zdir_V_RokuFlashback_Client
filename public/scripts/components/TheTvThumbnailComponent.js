@@ -3,7 +3,10 @@ export default {
     props: ["tv"],
     template: `
     <div class="tv-thumb">
+        <div class="img-wrap">
         <img :src='"images/" + tv.tv_cover' alt="tv thumb" @click="goToSingleTvPage">
+</div>
+<p>{{ thistv.tv_title }}</p>
     </div>
     `,
     data() {

@@ -13,7 +13,7 @@ import theMoviesHomepage from "./components/theMoviesHomepage.js";
     const router = new VueRouter({
         // mode: "history",
         routes: [
-            { path: "/", redirect: { name: "home" } },
+            { path: "/", redirect: { name: "login" } },
             { path: "/login", name: "login", component: LoginPage },
             { path: "/protected", component: Protected },
             { path: "/movie/:id", name: "singlemovie", component: SingleMovie, props: true },

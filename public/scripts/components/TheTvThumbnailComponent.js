@@ -16,8 +16,8 @@ export default {
     },
     methods: {
         goToSingleTvPage: function () {
-            // console.log(this.thismovie.movies_id);
-            this.$router.push({ name: "singletv", params: { id: this.tv.tv_id } });
+            var routeData = this.$router.resolve({ name: "singletv", params: { id: this.tv.tv_id } });
+            window.open(routeData.href, '_blank');
         }
     }
 }

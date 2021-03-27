@@ -1,8 +1,32 @@
-.movie-thumb, .tv-thumb{
-    width: 150px;
+.movie-thumb, .tv-thumb, .music-thumb{
     cursor: pointer;
     display: inline-block;
-    padding: 4px;
 
-    img {max-height: 220px;}
+        width: 200px;
+    height: 300px;
+    text-align: center;
+    p{
+        padding-top: 5px;
+    }
+     
+    .img-wrap{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 3px;
+    }
+
+    img {max-width: 200px; border-radius: 3px;  transition: transform 0.3s ease-in-out;}
+    
+        box-shadow: 0 2px 6px rgb(0 0 0 / 10%), 0 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 3px;
+
+}
+
+.movie-thumb, .tv-thumb, .music-thumb{
+    img:hover{
+        transform-origin: center;
+        transform: scale(1.05);
+        cursor: pointer;
+    }
 }

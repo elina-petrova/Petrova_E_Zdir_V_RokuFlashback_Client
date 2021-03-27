@@ -1,0 +1,49 @@
+.episodes_section{
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 10vw;
+    width: 100%;
+    background: black;
+    color: #EEEEEE;
+}
+.season_selection {
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem 0;
+    border-bottom: 1px #EEEEEE solid;
+    a{
+        padding: 0.3rem 0.8rem;
+        border-radius: 3px;
+        margin-left: 2rem;
+        font-size: 15px;
+    }
+    p{
+        font-size: 20px;
+        margin-right: 2rem;
+    }
+}
+.active_season{
+    background-color: rgb(45, 12, 95);
+}
+
+.episode{
+    display: flex;
+    padding: 1rem;
+    img{
+        width: 30px;
+        margin-right: 2rem;
+        transition: opacity 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    p{
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out;
+        font-size: 20px;
+    }
+    img:hover{
+        opacity: 0.2;
+    }
+    p:hover{
+        opacity: 0.2;
+    }
+}

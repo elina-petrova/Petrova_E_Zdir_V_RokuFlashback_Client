@@ -37,3 +37,31 @@ height: 20px;
     display: flex;
     align-items: center;
 }
+
+.row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 100vh;
+}
+.users_wrap{
+    display: flex;
+    flex-direction: row;
+}
+.card-body{
+    padding:2rem;
+    text-align: center;
+    img{
+        border-radius: 100%;
+        width: 100px;
+    }
+}
+@media (min-width: 740px){
+    .card-body{
+    img{
+        width: auto;
+    }
+}
+}

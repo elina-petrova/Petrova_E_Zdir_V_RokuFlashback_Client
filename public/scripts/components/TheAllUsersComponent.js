@@ -10,7 +10,7 @@ export default {
 				<h1 class="user-message">{{ message }}</h1>
 			</div>
 
-			<user v-for="(user, index) in userList" :liveuser="user" :key="index"></user>
+			<div class="users_wrap"> <user v-for="(user, index) in userList" :liveuser="user" :key="index"></user> </div>
 		</div>
 	</div>
 	`,

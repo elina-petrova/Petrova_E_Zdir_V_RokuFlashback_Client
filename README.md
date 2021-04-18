@@ -37,6 +37,7 @@ Make sure you have WAMP set up on your computer.
 ## Documentations
 
 [Design docs](https://docs.google.com/document/d/1gqz90hmK1Pes1IQqY0ApFHe9r0-ZIYAKqBYTPZXMbJE/edit?usp=sharing).
+View working prototype: https://xd.adobe.com/view/a3c9ba35-1c75-4e6b-a719-6d064bc2f7b7-f69a/
 
 [Dev docs](https://docs.google.com/document/d/1gauAooCEiezyV8Q7QeFuYy-B4L0LZsN1bX9F0lhYsro/edit?usp=sharing).
 

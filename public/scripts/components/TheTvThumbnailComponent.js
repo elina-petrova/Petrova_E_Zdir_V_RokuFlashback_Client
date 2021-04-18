@@ -1,18 +1,17 @@
 export default {
-    name: "TheMovieThumbnail",
+    name: "TheTvThumbnail",
     props: ["tv"],
     template: `
     <div class="tv-thumb">
         <div class="img-wrap">
         <img :src='"images/" + tv.tv_cover' alt="tv thumb" @click="goToSingleTvPage">
 </div>
-<p>{{ thistv.tv_title }}</p>
+<p>{{ tv.tv_title }}</p>
     </div>
     `,
     data() {
         return {
-            allMovies: [],
-            thistv: this.tv
+            // thistv: this.tv
         }
     },
     created: function () {

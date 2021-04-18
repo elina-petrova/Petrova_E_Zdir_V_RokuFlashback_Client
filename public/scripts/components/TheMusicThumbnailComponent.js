@@ -1,16 +1,17 @@
 export default {
-    name: "TheMovieThumbnail",
+    name: "TheMusicThumbnail",
     props: ["music"],
     template: `
     <div class="music-thumb">
         <div class="img-wrap">
         <img :src='"images/" + music.music_cover' alt="music thumb" @click="goToSingleMusicPage">
 </div>
+<p>{{ music.music_title }}</p>
     </div>
     `,
     data() {
         return {
-            thismusic: this.music
+            // thismusic: this.music
         }
     },
     created: function () {

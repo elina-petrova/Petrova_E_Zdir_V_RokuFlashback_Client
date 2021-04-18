@@ -17,5 +17,11 @@
     align-content: center;
 }
 .music_content{
+    width: 95%;
+}
+
+@media (min-width:600px){
+    .music_content{
     width: auto;
+}
 }

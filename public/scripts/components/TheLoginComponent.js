@@ -1,24 +1,24 @@
 export default {
     name: 'TheLoginComponent',
     template: `
-        <div class="container">
-            <div class="jumbotron roku-jumbotron">
-                <h1 class="display-4">Welcome to Flashback!</h1>
-                <p class="lead">Before revisiting your favourite movies, tv shows or music from yesteryear, please log in with a valid username and password.</p>
-                <hr class="my-4">
+        <div class="container login_wrap">
+            <div class="login_card">
+                <h1 class="">Welcome to Flashback!</h1>
+                <p class="headingSubtext">Before revisiting your favourite movies, tv shows or music from yesteryear, please log in with a valid username and password.</p>
+                <hr class="">
                 <form>
-                    <div class="form-row align-items-center">
-                        <div class="col-md-3 my-1">
-                            <label class="sr-only" for="inlineFormInputName">Name</label>
+                    <div class="">
+                        <div class="">
+                            <label class="" for="inlineFormInputName">Name</label>
                             <input v-model="input.username" type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
                         </div>
 
-                        <div class="col-md-3 my-1">
-                            <label class="sr-only" for="inlineFormPassword">Name</label>
+                        <div class="">
+                            <label class="" for="inlineFormPassword">Name</label>
                             <input v-model="input.password" type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
                         </div>
 
-                        <div class="col-auto my-1">
+                        <div class="">
                             <button v-on:click.prevent="login()" type="submit" class="btn btn-primary">Go!</button>
                         </div>
                     </div>
@@ -60,7 +60,9 @@ export default {
                             console.warn("user doesn't exist, or something else broken");
                         } else {
                             data.user_name = this.input.username;
-                            this.$router.replace({ name: "home" });
+                            this.$root.authenticated = true;
+                            this.$router.replace({ name: "users" });
+
                         }
                     })
                     .catch((err) => console.error(err));

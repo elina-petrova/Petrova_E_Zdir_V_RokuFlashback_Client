@@ -21,3 +21,19 @@ body{
 ,#1c1d1c 50%,#323435 100%);
 color: #EEEEEE;
 }
+
+.twitter-share-button{
+height: 20px;
+    box-sizing: border-box;
+    padding: 1px 8px 1px 6px;
+    background-color: #1b95e0;
+    color: #fff;
+    border-radius: 3px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 4px;
+    font-size: 13px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}

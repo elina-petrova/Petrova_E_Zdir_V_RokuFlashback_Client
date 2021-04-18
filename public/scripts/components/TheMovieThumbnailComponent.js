@@ -6,13 +6,12 @@ export default {
         <div class="img-wrap">
         <img :src='"images/" + movie.movies_cover' alt="movie thumb" @click="goToSingleMoviePage">
 </div>
-        <p>{{ thismovie.movies_title }}</p>
+        <p>{{ movie.movies_title }}</p>
     </div>
     `,
     data() {
         return {
-            allMovies: [],
-            thismovie: this.movie
+            // thismovie: this.movie
         }
     },
     created: function () {

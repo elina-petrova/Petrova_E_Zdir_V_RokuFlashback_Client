@@ -17,12 +17,27 @@ export default {
 </ul>
 
 </div>
+<div class="nav_right">
 <div>
-            <router-link class="hover" to="/protected">Profile</router-link>
+            <router-link to="/protected">{{ currentUser.user_fname }} </router-link>
 </div>
+<div>
+    <p @click="this.$root.logout"><i class="fas fa-power-off"></i></p>
+</div>
+        </div>
         </div>
 
 
     `,
+    data() {
+        return {
+            currentUser: '',
+        }
+    },
+    created: function () {
+        if (localStorage.getItem('cacheduser')) {
+            this.currentUser = JSON.parse(localStorage.getItem('cacheduser'));
+        }
+    }
 }
 

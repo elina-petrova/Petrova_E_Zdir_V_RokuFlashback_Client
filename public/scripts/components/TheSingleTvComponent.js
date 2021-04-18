@@ -15,6 +15,13 @@ export default {
 </div>
         <div class="content_info">
         <h1> {{ theTv.tv_title }} </h1>
+
+        <div style="display:flex;"><a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=I%20just%20watched%20a%20tv%20on%20Roku%20Flashback%20!">
+Tweet</a>
+<div class="fb-like" data-href="https://www.roku.com/en-ca/" data-width="120px" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+</div>
+
  <div class="info">
         <div class="labels">
          <p> Year:</p>
@@ -62,6 +69,7 @@ export default {
         }
     },
     created: function () {
+        this.$root.authenticated = true;
         console.log('get tv');
         fetch(`/api/tvs/${this.id}`)
             .then(res => res.json())

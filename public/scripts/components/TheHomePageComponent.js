@@ -29,36 +29,41 @@ export default {
 </ul>
              
 </div>
+<div class="nav_right">
 <div>
-            <router-link class="hover" to="/protected">Profile</router-link>
+            <router-link to="/protected">{{ currentUser.user_fname }} </router-link>
+</div>
+<div>
+    <p @click="this.$root.logout"><i class="fas fa-power-off"></i></p>
 </div>
         </div>
+</div>
 
 
-        <div class="main_content">
+         <div class="main_content">
                     <div class="promo_section">
-            <h1> Explore the rich collection of vintage movies, tvs and music </h1>
-            <div class="promo_items_wrap">
+            <h1> Explore the rich collection of vintage movies, tvs and music! </h1>
+            <!-- <div class="promo_items_wrap">
                 <div class="promo_item">
                     <div class="promo_new"><p>New movie!</p></div>
                     <div class="promo_img">
-                         <moviethumb  :movie="allMovies[2]" :key="allMovies[2].movies_id"></moviethumb>
+                         <moviethumb :movie="allMovies[0]" :key="1"></moviethumb>
                     </div>
                 </div>
                  <div class="promo_item">
                     <div class="promo_new"><p>New episode!</p></div>
                     <div class="promo_img">
-                         <tvthumb :tv="allTvs[2]" :key="allTvs[5].tvs_id"></tvthumb>
+                         <tvthumb :tv="allTvs[0]" :key="2"></tvthumb>
                     </div>
                 </div>
                 <div class="promo_item">
                     <div class="promo_new"><p>New song!</p></div>
                     <div class="promo_img">
-                        <musicthumb :music="allMusic[1]" :key="allMusic[1].music_id"></musicthumb>
+                        <musicthumb :music="allMusic[0]" :key="3"></musicthumb>
                     </div>
-                </div>
+                </div> -->
 </div>
-</div>
+</div> 
 
 <div class="filters_wrap">
 <ul>
@@ -120,7 +125,7 @@ export default {
 
 <div v-if="type === 'movies'|| type==='all'">
     <div class="items_wrap">
-    <moviethumb v-for="item in filteredMovies" :movie="item" :key="item.movies_id"></moviethumb>
+    <moviethumb v-for="item in filteredMovies" :movie="item" :key="item.movies_id + 3"></moviethumb>
           <h1 v-if="filteredMovies.length === 0">No search results :(</h1>
     </div>
           </div>
@@ -225,13 +230,29 @@ export default {
             filteredMoviesGenre: [],
             currentItems: [],
             filteredMoviesEra: [],
-            type: this.mediatype
+            type: this.mediatype,
+            currentUser: ''
         }
     },
     created: function () {
-        this.fetchMovies();
-        this.fetchTvs();
-        this.fetchMusic();
+        if (localStorage.getItem('cacheduser')) {
+            this.currentUser = JSON.parse(localStorage.getItem('cacheduser'));
+        }
+        if (this.currentUser.user_admin > 0) {
+            this.$root.isAdmin = true;
+        } else {
+            this.$root.isAdmin = false;
+        }
+
+        if (this.currentUser.user_access == 0) {
+            this.fetchKidsMovies();
+            this.fetchKidsTvs();
+            this.fetchKidsMusic();
+        } else if (this.currentUser.user_access == 1) {
+            this.fetchAdultsMovies();
+            this.fetchAdultsTvs();
+            this.fetchAdultsMusic();
+        }
         this.type = this.mediatype;
 
     },
@@ -260,16 +281,24 @@ export default {
             document.querySelectorAll(".type")[2].classList.add("filter_active");
 
         },
-        fetchMovies() {
-            fetch('/api/movies')
+        fetchKidsMovies() {
+            fetch('/api/movies/kids')
                 .then(res => res.json())
                 .then(data => {
                     this.allMovies = this.filteredMovies = this.filteredMoviesEra = data;
                 })
                 .catch(err => console.error(err))
         },
-        fetchTvs() {
-            fetch('/api/tvs')
+        fetchAdultsMovies() {
+            fetch('/api/movies/adults')
+                .then(res => res.json())
+                .then(data => {
+                    this.allMovies = this.filteredMovies = this.filteredMoviesEra = data;
+                })
+                .catch(err => console.error(err))
+        },
+        fetchKidsTvs() {
+            fetch('/api/tvs/kids')
                 .then(res => res.json())
                 .then(data => {
                     this.allTvs = this.filteredTvs = this.filteredTvsEra = data;
@@ -277,8 +306,25 @@ export default {
                 })
                 .catch(err => console.error(err))
         },
-        fetchMusic() {
-            fetch('/api/music')
+        fetchAdultsTvs() {
+            fetch('/api/tvs/adults')
+                .then(res => res.json())
+                .then(data => {
+                    this.allTvs = this.filteredTvs = this.filteredTvsEra = data;
+
+                })
+                .catch(err => console.error(err))
+        },
+        fetchKidsMusic() {
+            fetch('/api/music/kids')
+                .then(res => res.json())
+                .then(data => {
+                    this.allMusic = this.filteredMusic = data;
+                })
+                .catch(err => console.error(err))
+        },
+        fetchAdultsMusic() {
+            fetch('/api/music/adults')
                 .then(res => res.json())
                 .then(data => {
                     this.allMusic = this.filteredMusic = data;

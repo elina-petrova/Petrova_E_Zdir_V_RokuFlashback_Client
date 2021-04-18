@@ -25,13 +25,23 @@
     flex-direction: row;
     align-items: center;
 }
+.nav_right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+}
 
-@media (min-width: 750px){
+@media (min-width: 1000px){
     .nav{
+        
          padding: 2rem 5rem;
          a{
         padding: 1rem 2rem;
     }
+    }
+    .nav_right{
+    display: flex;
     }
 }
 

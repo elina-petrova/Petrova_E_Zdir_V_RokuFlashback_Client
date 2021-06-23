@@ -4,6 +4,8 @@ This is the best streaming app you can find to watch movies, tv shows and listen
 
 ## Installation
 
+Download server-side app: [server](https://github.com/elina-petrova/Petrova_E_Zdir_V_RokuFlashback_Server)
+
 Download database: [database](https://drive.google.com/file/d/1IzFUEVWy16OsCep9DwBrl4XFdOkw4-Rs/view?usp=sharing)
 
 Download media resources: [media](https://drive.google.com/file/d/1ohN7NAcQEWaTS6dqJZJF1zsJSrSURHRN/view?usp=sharing)
